@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karine's Family Europe Trip 2026 | Global Vibes Travel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --red:   #C41230;
+      --gold:  #F0A500;
+      --dark:  #1a1a2e;
+      --navy:  #16213e;
+      --white: #ffffff;
+      --light: #f8f9fa;
+      --gray:  #6c757d;
+      --text:  #333333;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; color: var(--text); background: var(--white); }
+
+    /* ── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(26,26,46,0.96); backdrop-filter: blur(12px);
+      padding: 0 2rem; display: flex; align-items: center;
+      justify-content: space-between; height: 64px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+      transition: background 0.3s;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .nav-logo-text span:first-child {
+      font-family: 'Playfair Display', serif; font-size: 0.95rem;
+      font-weight: 700; color: #fff; letter-spacing: 0.04em;
+    }
+    .nav-logo-text span:last-child {
+      font-size: 0.68rem; color: var(--gold);
+      text-transform: uppercase; letter-spacing: 0.12em;
+    }
+    .nav-links { display: flex; list-style: none; gap: 0.2rem; }
+    .nav-links a {
+      color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.8rem;
+      font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.4rem 0.7rem; border-radius: 4px; transition: all 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); background: rgba(240,165,0,0.1); }
+    .nav-cta { background: var(--red) !important; color: #fff !important; }
+    .nav-cta:hover { background: #a50e27 !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(26,26,46,0.35) 0%, rgba(26,26,46,0.65) 55%, rgba(26,26,46,0.92) 100%),
+        url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1800&q=80') center/cover no-repeat;
+    }
+    .hero-content { position: relative; text-align: center; color: #fff; padding: 0 1.5rem; max-width: 920px; }
+    .hero-badge {
+      display: inline-block; background: var(--gold); color: var(--dark);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; padding: 0.4rem 1.2rem; border-radius: 2rem; margin-bottom: 1.4rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 700; line-height: 1.1;
+      margin-bottom: 1rem; text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    }
+    .hero h1 span { color: var(--gold); font-style: italic; }
+    .hero-subtitle { font-size: clamp(0.95rem, 1.8vw, 1.2rem); font-weight: 300; margin-bottom: 2.2rem; opacity: 0.9; }
+    .hero-dates {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: rgba(255,255,255,0.1); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 3rem;
+      padding: 0.7rem 1.8rem; margin-bottom: 1.75rem; font-size: 1.05rem;
+    }
+    .hero-dates i { color: var(--gold); }
+    .hero-route {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.4rem; flex-wrap: wrap; font-size: 0.87rem; letter-spacing: 0.04em; opacity: 0.92;
+    }
+    .hero-route .city {
+      background: rgba(255,255,255,0.14); padding: 0.28rem 0.75rem;
+      border-radius: 2rem; border: 1px solid rgba(255,255,255,0.22);
+    }
+    .hero-route .arrow { color: var(--gold); }
+    .hero-scroll {
+      position: absolute; bottom: 1.75rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: rgba(255,255,255,0.55); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      animation: bounce 2.2s infinite;
+    }
+    @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(7px); } }
+
+    /* ── SHARED ───────────────────────────────── */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 0.6rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--dark); line-height: 1.2; }
+    .section-divider { width: 56px; height: 3px; background: linear-gradient(to right, var(--red), var(--gold)); margin: 0.9rem auto; border-radius: 2px; }
+    .section-desc { font-size: 1rem; color: var(--gray); max-width: 600px; margin: 0 auto; line-height: 1.75; }
+
+    /* ── OVERVIEW ─────────────────────────────── */
+    #overview { background: var(--light); }
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+    .overview-card {
+      background: #fff; border-radius: 14px; padding: 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07); border-top: 4px solid var(--red);
+    }
+    .overview-card.gold-border { border-top-color: var(--gold); }
+    .overview-card h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.25rem;
+      color: var(--dark); margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .overview-card h3 i { color: var(--red); }
+    .overview-card.gold-border h3 i { color: var(--gold); }
+    .overview-list { list-style: none; }
+    .overview-list li {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      padding: 0.55rem 0; border-bottom: 1px solid #f2f2f2;
+      font-size: 0.92rem; color: var(--text); line-height: 1.5;
+    }
+    .overview-list li:last-child { border-bottom: none; }
+    .overview-list li i { color: #27ae60; margin-top: 3px; flex-shrink: 0; font-size: 0.8rem; }
+    .overview-list li.no i { color: var(--red); }
+    .trip-note {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 100%);
+      border-radius: 14px; padding: 1.5rem 2rem; color: #fff;
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .trip-note i { color: var(--gold); font-size: 1.3rem; flex-shrink: 0; margin-top: 3px; }
+    .trip-note p { font-size: 0.9rem; line-height: 1.65; opacity: 0.9; }
+    .trip-note strong { color: var(--gold); }
+
+    /* ── JOURNEY TIMELINE ─────────────────────── */
+    #journey { background: #fff; }
+    .timeline { position: relative; padding: 1rem 0; }
+    .timeline::before {
+      content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--red), var(--gold));
+      transform: translateX(-50%);
+    }
+    .tl-item { display: flex; align-items: flex-start; margin-bottom: 3.5rem; position: relative; }
+    .tl-item:nth-child(odd) { flex-direction: row; }
+    .tl-item:nth-child(even) { flex-direction: row-reverse; }
+    .tl-card {
+      width: calc(50% - 3.5rem); background: #fff; border-radius: 14px;
+      overflow: hidden; box-shadow: 0 6px 30px rgba(0,0,0,0.09);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .tl-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,0.14); }
+    .tl-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .tl-body { padding: 1.5rem; }
+    .tl-body h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark); margin-bottom: 0.2rem; }
+    .tl-body .ctry { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.7rem; }
+    .tl-body p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; margin-bottom: 0.8rem; }
+    .nights-tag {
+      display: inline-block; background: var(--light); border: 1px solid #e4e4e4;
+      border-radius: 2rem; padding: 0.22rem 0.75rem; font-size: 0.78rem; color: var(--gray);
+    }
+    .tl-dot {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      width: 52px; height: 52px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--red), #e6334e);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.2rem;
+      box-shadow: 0 4px 18px rgba(196,18,48,0.42); z-index: 2; flex-shrink: 0;
+    }
+    .tl-spacer { width: calc(50% - 3.5rem); }
+
+    /* ── HOTELS ───────────────────────────────── */
+    #hotels { background: var(--light); }
+    .hotels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .hotel-card {
+      background: #fff; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 22px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .hotel-card:hover { transform: translateY(-6px); box-shadow: 0 14px 42px rgba(0,0,0,0.14); }
+    .hotel-img { position: relative; height: 195px; overflow: hidden; }
+    .hotel-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; display: block; }
+    .hotel-card:hover .hotel-img img { transform: scale(1.06); }
+    .city-badge {
+      position: absolute; top: 0.9rem; left: 0.9rem; background: var(--red);
+      color: #fff; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 2rem;
+    }
+    .date-badge {
+      position: absolute; top: 0.9rem; right: 0.9rem;
+      background: rgba(26,26,46,0.82); color: #fff; font-size: 0.68rem;
+      padding: 0.22rem 0.6rem; border-radius: 2rem; backdrop-filter: blur(4px);
+    }
+    .hotel-body { padding: 1.4rem; }
+    .hotel-body h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--dark); margin-bottom: 0.55rem; line-height: 1.35; }
+    .hotel-meta { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.85rem; }
+    .hotel-meta span { display: flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--gray); }
+    .hotel-meta span i { color: var(--gold); }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .tag {
+      background: #e8f5e9; border: 1px solid #c8e6c9; color: #2e7d32;
+      border-radius: 2rem; padding: 0.18rem 0.6rem; font-size: 0.72rem;
+    }
+    .tag.warn { background: #fff8e1; border-color: #ffe082; color: #c77a00; }
+
+    /* ── FLIGHTS ──────────────────────────────── */
+    #flights { background: #fff; }
+    .flights-wrap { display: flex; flex-direction: column; gap: 1.5rem; }
+    .flight-card {
+      background: var(--light); border-radius: 16px; padding: 1.75rem 2rem;
+      border: 1px solid #e8e8e8;
+      display: grid; grid-template-columns: 130px 1fr auto; align-items: center; gap: 2rem;
+    }
+    .flt-dir .lbl { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 0.3rem; }
+    .flt-dir .dt { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--dark); }
+    .flt-path { display: flex; align-items: center; gap: 1rem; }
+    .flt-ap { text-align: center; flex-shrink: 0; }
+    .flt-ap .code { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--dark); line-height: 1; }
+    .flt-ap .city-sm { font-size: 0.72rem; color: var(--gray); margin-top: 0.15rem; }
+    .flt-ap .time { font-size: 0.95rem; font-weight: 700; color: var(--red); margin-top: 0.15rem; }
+    .flt-line { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+    .flt-line .fa-plane { color: var(--red); font-size: 1.15rem; }
+    .route-bar { width: 100%; height: 1px; background: #ccc; position: relative; }
+    .route-bar::before, .route-bar::after {
+      content: ''; position: absolute; top: 50%; transform: translateY(-50%);
+      width: 6px; height: 6px; border-radius: 50%; background: var(--red);
+    }
+    .route-bar::before { left: 0; } .route-bar::after { right: 0; }
+    .flt-line .direct { font-size: 0.7rem; color: #27ae60; font-weight: 700; letter-spacing: 0.05em; }
+    .flt-info { text-align: right; }
+    .flt-info .airline { font-size: 0.85rem; font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; }
+    .flt-info .fnum { font-size: 0.78rem; color: var(--gray); margin-bottom: 0.2rem; }
+    .flt-info .acft { font-size: 0.72rem; color: var(--gray); }
+    .transfer-note {
+      background: linear-gradient(135deg, #fff8e6, #fff3d0);
+      border: 1px solid #ffe4b0; border-radius: 14px; padding: 1.5rem 2rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .transfer-note i { color: var(--gold); font-size: 1.5rem; flex-shrink: 0; margin-top: 3px; }
+    .transfer-note h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.35rem; }
+    .transfer-note p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+    .transfer-price { font-size: 1.4rem; font-weight: 700; color: var(--dark); margin-top: 0.3rem; }
+    .transfer-price span { font-size: 0.82rem; color: var(--gray); font-weight: 400; }
+
+    /* ── PRICING ──────────────────────────────── */
+    #pricing { background: var(--dark); color: #fff; }
+    #pricing .section-label { color: var(--gold); }
+    #pricing .section-title { color: #fff; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+    .p-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 2rem; text-align: center;
+      transition: all 0.3s; cursor: default; position: relative;
+    }
+    .p-card:hover, .p-card.featured {
+      background: rgba(240,165,0,0.1); border-color: var(--gold); transform: translateY(-4px);
+    }
+    .p-card.featured::before {
+      content: 'BEST VALUE'; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%); background: var(--gold); color: var(--dark);
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+      padding: 0.22rem 1rem; border-radius: 0 0 0.5rem 0.5rem;
+    }
+    .p-card .p-type { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.55); margin-bottom: 0.4rem; }
+    .p-card .p-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #fff; margin-bottom: 1.2rem; }
+    .p-card .p-total { font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 0.2rem; }
+    .p-card .p-sub { font-size: 0.77rem; color: rgba(255,255,255,0.45); margin-bottom: 1.4rem; }
+    .p-breakdown { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 0.9rem; text-align: left; }
+    .p-row { display: flex; justify-content: space-between; font-size: 0.78rem; color: rgba(255,255,255,0.65); padding: 0.28rem 0; }
+    .p-row.total { border-top: 1px solid rgba(255,255,255,0.2); margin-top: 0.4rem; padding-top: 0.5rem; font-weight: 700; color: #fff; font-size: 0.83rem; }
+    .pricing-warn {
+      background: rgba(196,18,48,0.14); border: 1px solid rgba(196,18,48,0.3);
+      border-radius: 12px; padding: 1.4rem 2rem; display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .pricing-warn i { color: var(--red); font-size: 1.25rem; flex-shrink: 0; margin-top: 3px; }
+    .pricing-warn p { font-size: 0.88rem; color: rgba(255,255,255,0.78); line-height: 1.65; }
+    .pricing-warn strong { color: #fff; }
+
+    /* ── MAPS ─────────────────────────────────── */
+    #maps { background: var(--light); }
+    .map-tabs {
+      display: flex; gap: 0.4rem; margin-bottom: 1.75rem;
+      background: #fff; border-radius: 50px; padding: 0.35rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08); width: fit-content; margin-inline: auto;
+    }
+    .map-tab {
+      padding: 0.48rem 1.2rem; border-radius: 50px; border: none;
+      background: transparent; font-size: 0.82rem; font-weight: 700;
+      color: var(--gray); cursor: pointer; transition: all 0.2s; font-family: 'Lato', sans-serif;
+    }
+    .map-tab.active { background: var(--red); color: #fff; }
+    .map-panel { display: none; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 30px rgba(0,0,0,0.1); }
+    .map-panel.active { display: block; }
+    .map-panel iframe { width: 100%; height: 460px; border: none; display: block; }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer { background: var(--dark); color: #fff; padding: 3.5rem 2rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+    .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 0.2rem; }
+    .footer-brand .tagline { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.84rem; color: rgba(255,255,255,0.6); line-height: 1.72; }
+    .footer-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.9rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { font-size: 0.84rem; color: rgba(255,255,255,0.6); padding: 0.28rem 0; display: flex; align-items: center; gap: 0.5rem; }
+    .footer-col ul li i { color: var(--gold); width: 14px; flex-shrink: 0; }
+    .footer-col ul li a { color: var(--gold); text-decoration: none; }
+    .footer-col ul li a:hover { text-decoration: underline; }
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto; padding-top: 1.4rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.76rem; color: rgba(255,255,255,0.38);
+    }
+
+    /* ── SCROLL ANIMATIONS ────────────────────── */
+    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ───────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: absolute;
+        top: 64px; left: 0; right: 0; background: rgba(26,26,46,0.98);
+        padding: 1rem 2rem 1.5rem; gap: 0.2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      }
+      .nav-links.open a { font-size: 0.9rem; padding: 0.55rem 0.5rem; }
+      .overview-grid { grid-template-columns: 1fr; }
+      .timeline::before { left: 26px; }
+      .tl-item, .tl-item:nth-child(even) { flex-direction: column; padding-left: 66px; }
+      .tl-dot { left: 26px; }
+      .tl-card { width: 100%; }
+      .tl-spacer { display: none; }
+      .flight-card { grid-template-columns: 1fr; gap: 1.25rem; }
+      .flt-info { text-align: left; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 3.5rem 1.25rem; }
+      .hero-route { gap: 0.3rem; font-size: 0.78rem; }
+      .map-tabs { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <!-- GVT-inspired logo flag icon -->
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="7" fill="#1a1a2e"/>
+      <rect x="8" y="22" width="3" height="10" rx="1.5" fill="#F0A500"/>
+      <polygon points="11,8 28,13 11,18" fill="#C41230"/>
+      <polygon points="11,8 22,10.5 11,13" fill="#F0A500"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span>Global Vibes Travel</span>
+      <span>Karine's Europe 2026</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#hotels">Hotels</a></li>
+    <li><a href="#flights">Flights</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#maps">Maps</a></li>
+    <li><a href="https://www.globalvibestravel.com" target="_blank" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section id="hero" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Global Vibes Travel &nbsp;·&nbsp; Summer 2026</div>
+    <h1>Karine's Family<br><span>European Adventure</span></h1>
+    <p class="hero-subtitle">A curated 19-day journey through 4 iconic European destinations — crafted for the Pierre family</p>
+    <div class="hero-dates">
+      <i class="fas fa-calendar-alt"></i>
+      <span>June 28 – July 16, 2026 &nbsp;·&nbsp; 19 Days</span>
+    </div>
+    <div class="hero-route">
+      <span class="city">✈ Boston</span>
+      <span class="arrow">›</span>
+      <span class="city">🇬🇧 London</span>
+      <span class="arrow">›</span>
+      <span class="city">🇫🇷 Paris</span>
+      <span class="arrow">›</span>
+      <span class="city">🇮🇹 Rome</span>
+      <span class="arrow">›</span>
+      <span class="city">🇪🇸 Barcelona</span>
+      <span class="arrow">›</span>
+      <span class="city">✈ Boston</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Explore</span>
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     OVERVIEW
+════════════════════════════════════════════ -->
+<section id="overview">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Trip Package · Option 1</span>
+      <h2 class="section-title">What's Included in Your Package</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">Flights and hotels are packaged together for a seamless experience. Quote as of Feb 20, 2026, for the Pierre family (2 adults + 2 children, ages 6 &amp; 9).</p>
+    </div>
+
+    <div class="overview-grid fade-in">
+      <div class="overview-card">
+        <h3><i class="fas fa-check-circle"></i> Package Includes</h3>
+        <ul class="overview-list">
+          <li><i class="fas fa-check"></i> Round-trip Trans-Atlantic flights (Boston ↔ Europe)</li>
+          <li><i class="fas fa-check"></i> Hotels in all 4 cities — 17 nights total</li>
+          <li><i class="fas fa-check"></i> Breakfast included at every hotel</li>
+          <li><i class="fas fa-check"></i> Travel protection (flights &amp; hotel rooms)</li>
+          <li><i class="fas fa-check"></i> All hotel taxes included in the rate</li>
+        </ul>
+      </div>
+
+      <div class="overview-card gold-border">
+        <h3><i class="fas fa-times-circle" style="color:var(--gold)"></i> Not Included in Rate</h3>
+        <ul class="overview-list">
+          <li class="no"><i class="fas fa-times"></i> Flights or trains between countries</li>
+          <li class="no"><i class="fas fa-times"></i> Airport transfers</li>
+          <li class="no"><i class="fas fa-times"></i> Lunch &amp; dinner</li>
+          <li class="no"><i class="fas fa-times"></i> Tips &amp; gratuities</li>
+          <li class="no"><i class="fas fa-times"></i> Excursions &amp; activities</li>
+          <li class="no"><i class="fas fa-times"></i> City taxes (where applicable)</li>
+        </ul>
+      </div>
+
+      <div class="trip-note">
+        <i class="fas fa-info-circle"></i>
+        <p>
+          <strong>Important Notice:</strong> Rates and availability are <strong>NOT guaranteed</strong> until a deposit is received and applied. Availability is on a first-come, first-served basis — inventory is not being held. The minimum deposit for the combined flight + hotel package equals the cost of the flight plus travel protection. This quote is a <strong>DRAFT</strong> and components can be modified after discussion.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     JOURNEY TIMELINE
+════════════════════════════════════════════ -->
+<section id="journey">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Sample Itinerary</span>
+      <h2 class="section-title">Your European Journey</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">Four world-class cities, 19 unforgettable days. Departing Boston June 28 and returning July 16, 2026.</p>
+    </div>
+
+    <div class="timeline">
+
+      <!-- LONDON -->
+      <div class="tl-item fade-in">
+        <div class="tl-card">
+          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=700&q=80" alt="London Tower Bridge" loading="lazy">
+          <div class="tl-body">
+            <h3>London</h3>
+            <div class="ctry">England · United Kingdom</div>
+            <p>Arrive at Heathrow and step into one of the world's most iconic cities. Tower Bridge, Buckingham Palace, the British Museum, and vibrant neighborhoods await your family for 4 magical nights.</p>
+            <span class="nights-tag"><i class="fas fa-moon"></i>&nbsp; Jun 29 – Jul 2 &nbsp;·&nbsp; 4 Nights</span>
+          </div>
+        </div>
+        <div class="tl-dot"><i class="fas fa-crown"></i></div>
+        <div class="tl-spacer"></div>
+      </div>
+
+      <!-- PARIS -->
+      <div class="tl-item fade-in">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"><i class="fas fa-star"></i></div>
+        <div class="tl-card">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=700&q=80" alt="Paris" loading="lazy">
+          <div class="tl-body">
+            <h3>Paris</h3>
+            <div class="ctry">France</div>
+            <p>The City of Light for 5 nights. Marvel at the Eiffel Tower, stroll the Champs-Élysées, explore the Louvre, and indulge in world-renowned French cuisine in the heart of Europe.</p>
+            <span class="nights-tag"><i class="fas fa-moon"></i>&nbsp; Jul 3 – Jul 7 &nbsp;·&nbsp; 5 Nights</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROME -->
+      <div class="tl-item fade-in">
+        <div class="tl-card">
+          <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=700&q=80" alt="Rome Colosseum" loading="lazy">
+          <div class="tl-body">
+            <h3>Rome</h3>
+            <div class="ctry">Italy</div>
+            <p>The Eternal City offers 4 nights of history at every turn. The Colosseum, Trevi Fountain, Vatican City, the Sistine Chapel — plus extraordinary Italian food and culture.</p>
+            <span class="nights-tag"><i class="fas fa-moon"></i>&nbsp; Jul 8 – Jul 11 &nbsp;·&nbsp; 4 Nights</span>
+          </div>
+        </div>
+        <div class="tl-dot"><i class="fas fa-columns"></i></div>
+        <div class="tl-spacer"></div>
+      </div>
+
+      <!-- BARCELONA -->
+      <div class="tl-item fade-in">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"><i class="fas fa-sun"></i></div>
+        <div class="tl-card">
+          <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=700&q=80" alt="Barcelona" loading="lazy">
+          <div class="tl-body">
+            <h3>Barcelona</h3>
+            <div class="ctry">Spain</div>
+            <p>End your adventure in vibrant Barcelona for 4 nights. Gaudí's architectural masterpieces, beautiful beaches, Las Ramblas, and a world-famous food scene make for the perfect grand finale.</p>
+            <span class="nights-tag"><i class="fas fa-moon"></i>&nbsp; Jul 12 – Jul 15 &nbsp;·&nbsp; 4 Nights</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     HOTELS
+════════════════════════════════════════════ -->
+<section id="hotels">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Accommodations</span>
+      <h2 class="section-title">Your Hotels</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">Hand-selected properties in the heart of each city. Breakfast included at every stay. Rates include accommodations and hotel taxes.</p>
+    </div>
+
+    <div class="hotels-grid fade-in">
+
+      <!-- LONDON -->
+      <div class="hotel-card">
+        <div class="hotel-img">
+          <img src="https://images.unsplash.com/photo-1549294413-26f195200c16?w=600&q=80" alt="London Hotel" loading="lazy">
+          <span class="city-badge">London</span>
+          <span class="date-badge">Jun 29</span>
+        </div>
+        <div class="hotel-body">
+          <h3>Hotel Riu Plaza London Victoria</h3>
+          <div class="hotel-meta">
+            <span><i class="fas fa-moon"></i> 4 Nights</span>
+            <span><i class="fas fa-users"></i> 2 Adults + 2 Children (6 &amp; 9)</span>
+          </div>
+          <div class="hotel-meta">
+            <span><i class="fas fa-bed"></i> Deluxe Family Room (Without Window)</span>
+          </div>
+          <div class="tags">
+            <span class="tag"><i class="fas fa-coffee"></i> Breakfast Included</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PARIS -->
+      <div class="hotel-card">
+        <div class="hotel-img">
+          <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Paris Hotel" loading="lazy">
+          <span class="city-badge">Paris</span>
+          <span class="date-badge">Jul 3</span>
+        </div>
+        <div class="hotel-body">
+          <h3>Hyatt Regency Paris Étoile</h3>
+          <div class="hotel-meta">
+            <span><i class="fas fa-moon"></i> 5 Nights</span>
+            <span><i class="fas fa-users"></i> 2 Adults + 2 Children (6 &amp; 9)</span>
+          </div>
+          <div class="hotel-meta">
+            <span><i class="fas fa-bed"></i> Family Room — Connecting (1 King + 2 Twin)</span>
+          </div>
+          <div class="tags">
+            <span class="tag"><i class="fas fa-coffee"></i> Breakfast Included</span>
+            <span class="tag warn"><i class="fas fa-exclamation-triangle"></i> Non-Refundable</span>
+            <span class="tag warn"><i class="fas fa-city"></i> City Tax Not Included</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROME -->
+      <div class="hotel-card">
+        <div class="hotel-img">
+          <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80" alt="Rome Hotel" loading="lazy">
+          <span class="city-badge">Rome</span>
+          <span class="date-badge">Jul 8</span>
+        </div>
+        <div class="hotel-body">
+          <h3>Crowne Plaza Rome – St. Peter's Hotel &amp; Spa by IHG</h3>
+          <div class="hotel-meta">
+            <span><i class="fas fa-moon"></i> 4 Nights</span>
+            <span><i class="fas fa-users"></i> 2 Adults + 2 Children (6 &amp; 9)</span>
+          </div>
+          <div class="hotel-meta">
+            <span><i class="fas fa-bed"></i> Junior Suite — 1 King + 2 Twin Beds</span>
+          </div>
+          <div class="tags">
+            <span class="tag"><i class="fas fa-coffee"></i> Breakfast Included</span>
+            <span class="tag warn"><i class="fas fa-city"></i> City Tax Not Included</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BARCELONA -->
+      <div class="hotel-card">
+        <div class="hotel-img">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Barcelona Hotel" loading="lazy">
+          <span class="city-badge">Barcelona</span>
+          <span class="date-badge">Jul 12</span>
+        </div>
+        <div class="hotel-body">
+          <h3>Nobu Hotel Barcelona</h3>
+          <div class="hotel-meta">
+            <span><i class="fas fa-moon"></i> 4 Nights</span>
+            <span><i class="fas fa-users"></i> 2 Adults + 2 Children (6 &amp; 9)</span>
+          </div>
+          <div class="hotel-meta">
+            <span><i class="fas fa-bed"></i> Premium Two Doubles</span>
+          </div>
+          <div class="tags">
+            <span class="tag"><i class="fas fa-coffee"></i> Breakfast Included</span>
+            <span class="tag warn"><i class="fas fa-city"></i> City Tax Additional</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FLIGHTS
+════════════════════════════════════════════ -->
+<section id="flights">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Air Travel</span>
+      <h2 class="section-title">Your Flights</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">Direct round-trip transatlantic flights with Delta Air Lines from Boston Logan. No stops — straight to Europe and back.</p>
+    </div>
+
+    <div class="flights-wrap fade-in">
+
+      <!-- OUTBOUND -->
+      <div class="flight-card">
+        <div class="flt-dir">
+          <div class="lbl">Outbound</div>
+          <div class="dt">June 28, 2026</div>
+        </div>
+        <div class="flt-path">
+          <div class="flt-ap">
+            <div class="code">BOS</div>
+            <div class="city-sm">Boston Logan</div>
+            <div class="time">11:10 PM</div>
+          </div>
+          <div class="flt-line">
+            <i class="fas fa-plane"></i>
+            <div class="route-bar"></div>
+            <div class="direct">DIRECT · 0 STOPS</div>
+          </div>
+          <div class="flt-ap">
+            <div class="code">LHR</div>
+            <div class="city-sm">London Heathrow</div>
+            <div class="time">10:40 AM +1</div>
+          </div>
+        </div>
+        <div class="flt-info">
+          <div class="airline">Delta / Virgin Atlantic</div>
+          <div class="fnum">Flight DL5984</div>
+          <div class="acft">Boeing 787-9 · X/Delta Main Classic</div>
+        </div>
+      </div>
+
+      <!-- RETURN -->
+      <div class="flight-card">
+        <div class="flt-dir">
+          <div class="lbl">Return</div>
+          <div class="dt">July 16, 2026</div>
+        </div>
+        <div class="flt-path">
+          <div class="flt-ap">
+            <div class="code">BCN</div>
+            <div class="city-sm">Barcelona El Prat</div>
+            <div class="time">3:15 PM</div>
+          </div>
+          <div class="flt-line">
+            <i class="fas fa-plane" style="transform:scaleX(-1)"></i>
+            <div class="route-bar"></div>
+            <div class="direct">DIRECT · 0 STOPS</div>
+          </div>
+          <div class="flt-ap">
+            <div class="code">BOS</div>
+            <div class="city-sm">Boston Logan</div>
+            <div class="time">5:41 PM</div>
+          </div>
+        </div>
+        <div class="flt-info">
+          <div class="airline">Delta</div>
+          <div class="fnum">Flight DL0251</div>
+          <div class="acft">Airbus A330-300 · X/Delta Main Classic</div>
+        </div>
+      </div>
+
+      <!-- TRANSFERS NOTE -->
+      <div class="transfer-note">
+        <i class="fas fa-train"></i>
+        <div>
+          <h4>Trains, Flights &amp; Transfers Between Countries</h4>
+          <p>Transportation connecting London → Paris → Rome → Barcelona (intra-Europe trains, short-haul flights, and airport transfers) is not included in the main package rate. Budget approximately:</p>
+          <div class="transfer-price">~$1,000 <span>per person &nbsp;(rates fluctuate, may be more)</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PRICING
+════════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Investment</span>
+      <h2 class="section-title">Package Rates Per Person</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc" style="color:rgba(255,255,255,0.6)">
+        Option 1 — Direct Flights + Hotels Packaged Together (Boston; Delta). Rates are per person and include round-trip transatlantic flights, hotels with breakfast, and travel protection.
+      </p>
+    </div>
+
+    <div class="pricing-grid fade-in">
+
+      <div class="p-card featured">
+        <div class="p-type">Best Value</div>
+        <div class="p-name">Quad Room</div>
+        <div class="p-total">$5,500</div>
+        <div class="p-sub">estimated total per person</div>
+        <div class="p-breakdown">
+          <div class="p-row"><span>Package (RT flights + hotels)</span><span>$4,500</span></div>
+          <div class="p-row"><span>Trains / Transfers (approx.)</span><span>~$1,000</span></div>
+          <div class="p-row total"><span>Est. Total / Person</span><span>$5,500</span></div>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-type">Triple</div>
+        <div class="p-name">Triple Room</div>
+        <div class="p-total">$6,500</div>
+        <div class="p-sub">estimated total per person</div>
+        <div class="p-breakdown">
+          <div class="p-row"><span>Package (RT flights + hotels)</span><span>$5,500</span></div>
+          <div class="p-row"><span>Trains / Transfers (approx.)</span><span>~$1,000</span></div>
+          <div class="p-row total"><span>Est. Total / Person</span><span>$6,500</span></div>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-type">Double</div>
+        <div class="p-name">Double Room</div>
+        <div class="p-total">$6,500</div>
+        <div class="p-sub">estimated total per person</div>
+        <div class="p-breakdown">
+          <div class="p-row"><span>Package (RT flights + hotels)</span><span>$5,500</span></div>
+          <div class="p-row"><span>Trains / Transfers (approx.)</span><span>~$1,000</span></div>
+          <div class="p-row total"><span>Est. Total / Person</span><span>$6,500</span></div>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-type">Single</div>
+        <div class="p-name">Single Room</div>
+        <div class="p-total">$8,500</div>
+        <div class="p-sub">estimated total per person</div>
+        <div class="p-breakdown">
+          <div class="p-row"><span>Package (RT flights + hotels)</span><span>$7,500</span></div>
+          <div class="p-row"><span>Trains / Transfers (approx.)</span><span>~$1,000</span></div>
+          <div class="p-row total"><span>Est. Total / Person</span><span>$8,500</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pricing-warn fade-in">
+      <i class="fas fa-exclamation-circle"></i>
+      <p>
+        <strong>Rates &amp; Availability Are NOT Guaranteed</strong> until deposit is processed. Minimum deposit = cost of flight + travel protection. Excursions, city taxes, airport transfers, lunch, dinner, and tips are not included. Rates for 2 adults and 2 children (ages 6 &amp; 9) departing from Boston (BOS).
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     MAPS
+════════════════════════════════════════════ -->
+<section id="maps">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Navigate Your Trip</span>
+      <h2 class="section-title">City Maps</h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">Explore each destination before you arrive. Tap a city to view its interactive map.</p>
+    </div>
+
+    <div class="map-tabs fade-in">
+      <button class="map-tab active" onclick="showMap('london',this)">🇬🇧 London</button>
+      <button class="map-tab" onclick="showMap('paris',this)">🇫🇷 Paris</button>
+      <button class="map-tab" onclick="showMap('rome',this)">🇮🇹 Rome</button>
+      <button class="map-tab" onclick="showMap('barcelona',this)">🇪🇸 Barcelona</button>
+    </div>
+
+    <div id="map-london" class="map-panel active fade-in">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317715.7119763907!2d-0.3817766!3d51.5285582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!5e0!3m2!1sen!2sus!4v1700000000001"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="London Map"></iframe>
+    </div>
+
+    <div id="map-paris" class="map-panel fade-in">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.95410653852!2d2.2646349!3d48.8588897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2sus!4v1700000000002"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Paris Map"></iframe>
+    </div>
+
+    <div id="map-rome" class="map-panel fade-in">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d189820.1604951541!2d12.3457137!3d41.9097306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f6196f9928ebb%3A0xb90f770693656e38!2sRome%2C+Italy!5e0!3m2!1sen!2sus!4v1700000000003"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Rome Map"></iframe>
+    </div>
+
+    <div id="map-barcelona" class="map-panel fade-in">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96072.11443734847!2d2.1079571!3d41.3927754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49816718e30e5%3A0x44b0fb3d4f47660a!2sBarcelona%2C+Spain!5e0!3m2!1sen!2sus!4v1700000000004"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Barcelona Map"></iframe>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Global Vibes Travel</h3>
+      <div class="tagline">Your World. Your Journey.</div>
+      <p>Crafting unforgettable travel experiences for families, groups, and adventurers worldwide. Your trusted partner for seamless, stress-free international travel planning.</p>
+    </div>
+    <div class="footer-col">
+      <h4>This Trip</h4>
+      <ul>
+        <li><i class="fas fa-calendar"></i> Jun 28 – Jul 16, 2026</li>
+        <li><i class="fas fa-map-marker-alt"></i> London, England</li>
+        <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+        <li><i class="fas fa-map-marker-alt"></i> Rome, Italy</li>
+        <li><i class="fas fa-map-marker-alt"></i> Barcelona, Spain</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><i class="fas fa-globe"></i> <a href="https://www.globalvibestravel.com" target="_blank">globalvibestravel.com</a></li>
+        <li><i class="fas fa-user"></i> Prepared for: Karine Pierre</li>
+        <li><i class="fas fa-file-alt"></i> Quote Date: Feb 20, 2026</li>
+        <li><i class="fas fa-tag"></i> Option 1 — Flight + Hotel Package</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Global Vibes Travel · All rights reserved</span>
+    <span>Pierre Family · Europe Summer 2026 · Prepared by Global Vibes Travel</span>
+  </div>
+</footer>
+
+
+<script>
+  // ── Map tab switcher ──────────────────────────
+  function showMap(city, btn) {
+    document.querySelectorAll('.map-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.map-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('map-' + city).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // ── Mobile nav toggle ─────────────────────────
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  // Close mobile nav on link click
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+  );
+
+  // ── Scroll fade-in animations ─────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── Navbar glass effect on scroll ─────────────
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(26,26,46,0.99)'
+      : 'rgba(26,26,46,0.96)';
+  });
+</script>
+
+</body>
+</html>
